@@ -46,21 +46,21 @@
 ## 4. 모델 아키텍처 및 수리적 성질 (Model Architecture)
 국소적 특징과 추상적 전역 맥락을 동시에 보존하며 은닉층으로 전달할 수 있도록 수제 설계한 Dense CNN 구조입니다.
 
-[Input: 3x32x32]
-│
-[Conv 1] ➔ 국소적 경계 특징 추출 (h1) ──────┐
-│                                      │ (Dense Connection: 채널 축 결합)
-[Conv 2] ➔ 추상적 공간 맥락 추출 (h2) ──────┴─➔ [dense_bridge: 64x32x32]
-│
-[Conv 3 + MaxPool] ➔ 차원 수축 및 공간 불변성 확보 [128x16x16]
-│
-[Conv 4 + MaxPool] ➔ 고차원 특징 스케일업 [256x8x8]
-│
-[Flatten] ➔ 고차원 특징 전사 벡터 생성 [16,384차원]
-│
-🌟[FC Bottleneck] ➔ 은닉층 차원 제어 및 실험 구간 (64차원 vs 8차원 선형 사영)
-│
-[FC Classifier] ➔ 다중 로지스틱 분류 경계 초평면 형성 [10차원 로짓 배출]
+[Input: 3x32x32]  
+│  
+[Conv 1] ➔ 국소적 경계 특징 추출 (h1) ──────┐  
+│                                      │ (Dense Connection: 채널 축 결합)  
+[Conv 2] ➔ 추상적 공간 맥락 추출 (h2) ──────┴─➔ [dense_bridge: 64x32x32]  
+│  
+[Conv 3 + MaxPool] ➔ 차원 수축 및 공간 불변성 확보 [128x16x16]  
+│  
+[Conv 4 + MaxPool] ➔ 고차원 특징 스케일업 [256x8x8]  
+│  
+[Flatten] ➔ 고차원 특징 전사 벡터 생성 [16,384차원]  
+│  
+🌟[FC Bottleneck] ➔ 은닉층 차원 제어 및 실험 구간 (64차원 vs 8차원 선형 사영)  
+│  
+[FC Classifier] ➔ 다중 로지스틱 분류 경계 초평면 형성 [10차원 로짓 배출]  
 
 
    ---
